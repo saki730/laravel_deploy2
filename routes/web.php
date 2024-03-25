@@ -61,3 +61,4 @@ Route::get('/user/profile/edit', [UserController::class, 'showUserForm']);
 
 require __DIR__.'/auth.php';
 
+URL::forceScheme('http');
