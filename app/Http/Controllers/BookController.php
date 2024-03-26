@@ -55,7 +55,8 @@ class BookController extends Controller
     }
     //以下に登録処理を記述（Eloquentモデル）
 
-  // Eloquentモデル
+  // Eloquentモデル validationエラーなかった場合ここに進む
+
   $books = new Book;
   $books->item_name   = $request->item_name;
   $books->item_number = $request->item_number;
