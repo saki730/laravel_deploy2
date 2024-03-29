@@ -41,10 +41,12 @@ class BookController extends Controller
               
     //バリデーション
     $validator = Validator::make($request->all(), [
-         'item_name' => 'required|min:3|max:255',
-         'item_number' => 'required | min:1 | max:3',
-         'item_amount' => 'required | max:6',
-         'published'   => 'required',
+         'id' => 'required|min:3|max:255',
+         'name' => 'required | max:255',
+         'mail' => 'required | max:255',
+         'password'   => 'required | max:255',
+         'age'   => 'required | max:255',
+         'location'   => 'required | max:255',
     ]);
 
     //バリデーション:エラー 
@@ -57,10 +59,12 @@ class BookController extends Controller
 
   // Eloquentモデル
   $books = new Book;
-  $books->item_name   = $request->item_name;
-  $books->item_number = $request->item_number;
-  $books->item_amount = $request->item_amount;
-  $books->published   = $request->published;
+  $books->id   = $request->id;
+  $books->name   = $request->name;
+  $books->mail = $request->mail;
+  $books->password = $request->password;
+  $books->age   = $request->age;
+  $books->location   = $request->location;
   $books->save(); 
   return redirect('/');
   
@@ -75,6 +79,10 @@ class BookController extends Controller
     {
         //
     }
+
+
+
+
 
     /**
      * Show the form for editing the specified resource.
