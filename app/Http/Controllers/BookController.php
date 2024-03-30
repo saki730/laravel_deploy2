@@ -16,8 +16,9 @@ class BookController extends Controller
     public function index()
     {
         //保存されてる本のデータを取得する
-        $books = Book::orderBy('created_at', 'asc')->get();
-    return view('books', [
+        //$books = Book::orderBy('created_at', 'asc')->get();
+        $latestBook = $books->orderBy('created_at', 'desc')->first();
+        return view('books', [
         'books' => $books
     ]);
     

@@ -24,11 +24,17 @@ use App\Http\Controllers\DashboardController;
 //本：ダッシュボード表示(books.blade.php)
 Route::get('/', [DashboardController::class,'index'])->middleware(['auth']);
 
+
+//Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+
+
 //本：追加 
 Route::post('/books',[BookController::class,"store"]);
 
 //本：削除 
-Route::delete('/book/{book}', [BookController::class,"destroy"]);
+//Route::delete('/book/{book}', [BookController::class,"destroy"]);
+
+Route::delete('/user/{id}', 'UserController@destroy')->name('user.destroy');
 
 //本：更新画面表示
 Route::post('/booksedit/{book}',[BookController::class,"edit"]); //通常

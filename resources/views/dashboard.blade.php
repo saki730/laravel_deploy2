@@ -27,17 +27,65 @@
     
     
  <!--右側エリア[START]-->
- <div class="flex-1 text-gray-700 text-left bg-blue-100 px-4 py-2 m-2">
-         <!-- 現在の本 -->
-         @if ($books->count() > 0)
-            @foreach ($books as $book)
-                <x-collection id="{{ $book->id }}">{{ $book->id }}{{ $book->name }}{{ $book->mail }}{{ $book->age }}{{ $book->location }}</x-collection>
-            @endforeach
-        @endif
-    </div>
-<!--右側エリア[[END]-->   
+<div class="flex-1 text-gray-700 text-left bg-blue-100 px-4 py-2 m-2">
+    <!-- 現在の本 -->
+    @if ($books->count() > 0)
+        @php
+            $latestBook = $books->last();
+        @endphp
+        <x-collection id="{{ $latestBook->id }}">
+        <div class="overflow-x-auto">
+            <table class="table">
+                      <!-- row 1 -->
+                       <tr>
+                       <th>1</th>
+                       <td>在籍年数</td>
+                       <td><p>{{ $latestBook->id }}</p></td>
+                       </tr>
 
+                        <!-- row 2 -->
+                        <tr>
+                       <th>2</th>
+                       <td>在籍会社名</td>
+                       <td><p>{{ $latestBook->name }}</p></td>
+                       </tr>
 
+                        <!-- row 3 -->
+                        <tr>
+                       <th>3</th>
+                       <td>業種</td>
+                       <td><p>{{ $latestBook->mail }}</p></td>
+                       </tr>            
+
+                       <!-- row 4 -->
+                       <tr>
+                       <th>4</th>
+                       <td>職種</td>
+                       <td><p>{{ $latestBook->password }}</p></td>
+                       </tr>  
+
+                       <!-- row 5 -->
+                       <tr>
+                       <th>5</th>
+                       <td>年齢</td>
+                       <td><p>{{ $latestBook->age }}</p></td>
+                       </tr>  
+
+                       <!-- row 6 -->
+                       <tr>
+                       <th>6</th>
+                       <td>職務内容</td>
+                       <td><p>{{ $latestBook->location }}</p></td>
+                       </tr>  
+
+            </table>
+        </div>
+        </x-collection>
+    @endif
+</div>
+<!--右側エリア[[END]-->
+
+ <!--左エリア[END]--> 
             <!-- プロフィール入力欄 -->
             <form action="{{ url('books') }}" method="POST" class="w-full max-w-lg">
                 @csrf
@@ -45,51 +93,49 @@
                    <!-- カラム１ -->
                     <div class="w-full md:w-1/1 px-3 mb-2 md:mb-0">
                       <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-                       社会人歴
+                      在籍年数
                       </label>
                       <input name="id" class="appearance-none block w-full text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" type="number" placeholder="">
                     </div>
                     <!-- カラム２ -->
                     <div class="w-full md:w-1/1 px-3">
                       <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-                        名前
+                      在籍会社名
                       </label>
                       <input name="name" class="appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="text" placeholder="">
                     </div>
                     <!-- カラム３ -->
                     <div class="w-full md:w-1/1 px-3 mb-2 md:mb-0">
                       <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-                        メールアドレス
+                      業種
                       </label>
                       <input name="mail" class="appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="text" placeholder="">
                     </div>
                     <!-- カラム４ -->
                     <div class="w-full md:w-1/1 px-3 mb-6 md:mb-0">
-                      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-                        パスワード
-                      </label>
-                      <input name="password" class="appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="password" placeholder="">
+                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+                     職種
+                    </label>
+                    <input name="password" class="appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="text" placeholder="">
                     </div>
-                  </div>
-                    <!-- カラム４ -->
+                    <!-- カラム5 -->
                     <div class="w-full md:w-1/1 px-3 mb-6 md:mb-0">
                       <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-                        年齢
+                      年齢
                       </label>
                       <input name="age" class="appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="number" placeholder="">
                     </div>
                   </div>
 
-                    <!-- カラム４ -->
-                    <div class="w-full md:w-1/1 px-3 mb-6 md:mb-0">
+                    <!-- カラム6 -->
+                      <div class="w-full md:w-1/1 px-3 mb-6 md:mb-0">
                       <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-                        居住地
+                    職務内容
                       </label>
                       <input name="location" class="appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="text" placeholder="">
                     </div>
                   </div>
-
-                  <!-- カラム５ -->
+               
                   <div class="flex flex-col">
                       <div class="text-gray-700 text-center px-4 py-2 m-2">
                              <x-button class="bg-blue-500 rounded-lg">送信</x-button>
@@ -100,148 +146,7 @@
         <!--左エリア[END]--> 
 
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900 dark:text-gray-100">
-                    {{ __("You're logged in!") }}
-                </div>
-            </div>
-        </div>
-    </div>
-    
-        <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900 dark:text-gray-100">
-                    {{ __("プロフィール画面") }}
-                    
-                       <div class="w-full md:w-1/1 px-3 mb-2 md:mb-0">
-                      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-                       年齢
-                      </label>
-                      <input name="age" class="appearance-none block w-full text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" type="text" placeholder="">
-                    </div>
-  
-     <div class="w-full md:w-1/1 px-3 mb-2 md:mb-0">
-                      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-                       居住地
-                      </label>
-                      <input name="item_name" class="appearance-none block w-full text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" type="text" placeholder="">
-                    </div>
-  
-                         <div class="w-full md:w-1/1 px-3 mb-2 md:mb-0">
-                      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-                       在籍会社名
-                      </label>
-                      <input name="item_name" class="appearance-none block w-full text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" type="text" placeholder="">
-                    </div>
-  
-     <div class="w-full md:w-1/1 px-3 mb-2 md:mb-0">
-                      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-                       業種
-                      </label>
-                      <input name="item_name" class="appearance-none block w-full text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" type="text" placeholder="">
-                    </div>
-  
-       <div class="w-full md:w-1/1 px-3 mb-2 md:mb-0">
-                      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-                       職種
-                      </label>
-                      <input name="item_name" class="appearance-none block w-full text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" type="text" placeholder="">
-                    </div>
-  
-         <div class="w-full md:w-1/1 px-3 mb-2 md:mb-0">
-                      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-                       入社日
-                      </label>
-                      <input name="item_name" class="appearance-none block w-full text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" type="text" placeholder="">
-                    </div>
-  
-           <div class="w-full md:w-1/1 px-3 mb-2 md:mb-0">
-                      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-                       入社日
-                      </label>
-                      <input name="item_name" class="appearance-none block w-full text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" type="text" placeholder="">
-                    </div>
-             <div class="w-full md:w-1/1 px-3 mb-2 md:mb-0">
-                      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-                       職務内容詳細
-                      </label>
-                      <input name="item_name" class="appearance-none block w-full text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" type="text" placeholder="">
-                    </div>
-                    
-             <div class="w-full md:w-1/1 px-3 mb-2 md:mb-0">
-                      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-                       資格
-                      </label>
-                      <input name="item_name" class="appearance-none block w-full text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" type="text" placeholder="">
-                    </div>                    
-                    
-               <div class="w-full md:w-1/1 px-3 mb-2 md:mb-0">
-                      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-                       Facebookアカウント
-                      </label>
-                      <input name="item_name" class="appearance-none block w-full text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" type="text" placeholder="">
-                    </div>  
-  
-                 <div class="w-full md:w-1/1 px-3 mb-2 md:mb-0">
-                      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-                       Twitterアカウント
-                      </label>
-                      <input name="item_name" class="appearance-none block w-full text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" type="text" placeholder="">
-                    </div>  
-
-               <div class="w-full md:w-1/1 px-3 mb-2 md:mb-0">
-                      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-                       Instagramアカウント
-                      </label>
-                      <input name="item_name" class="appearance-none block w-full text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" type="text" placeholder="">
-                    </div>  
-  
-                 <div class="w-full md:w-1/1 px-3 mb-2 md:mb-0">
-                      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-                       noteアカウント
-                      </label>
-                      <input name="item_name" class="appearance-none block w-full text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" type="text" placeholder="">
-                    </div>  
-  
-                   <div class="w-full md:w-1/1 px-3 mb-2 md:mb-0">
-                      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-                       Tiktokアカウント
-                      </label>
-                      <input name="item_name" class="appearance-none block w-full text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" type="text" placeholder="">
-                    </div>  
-  
-                    <div class="flex flex-col">
-                      <div class="text-gray-700 text-center px-4 py-2 m-2">
-                             <x-button class="bg-blue-500 rounded-lg">送信</x-button>
-                             <button class="btn btn-wide">Wide</button>
-                      </div>
-                   </div>
-  
-                </div>
-            </div>
-        </div>
-    </div>
-    
-profile編集用のフォーム
-
-<input type="text" placeholder="Type here" class="input input-bordered w-full max-w-xs" />
-
-<label class="form-control w-full max-w-xs">
-  <div class="label">
-    <span class="label-text">What is your name?</span>
-    <span class="label-text-alt">Top Right label</span>
-  </div>
-  <input type="text" placeholder="Type here" class="input input-bordered w-full max-w-xs" />
-  <div class="label">
-    <span class="label-text-alt">Bottom Left label</span>
-    <span class="label-text-alt">Bottom Right label</span>
-  </div>
-  
-
-</label>
+ 
 
 
     

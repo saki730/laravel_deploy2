@@ -20,4 +20,16 @@ class DashboardController extends Controller
         // ビューに $books 変数を渡す
         return view('dashboard', ['books' => $books]);
     }
+
+    public function destroy(Book $book) {
+        //** ↓ 下をコピー ↓ **    
+         
+         $book->delete();       //追加
+         return redirect('/');  //追加
+         
+          //** ↑ 上をコピー ↑ **
+     }
+
+
 }
+

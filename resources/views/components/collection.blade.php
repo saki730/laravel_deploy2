@@ -1,29 +1,24 @@
 
 <!-- 本: 削除ボタン -->
-<div class="flex justify-between p-4 items-center bg-blue-500 text-white rounded-lg border-2 border-white">
+<div class="card w-97 bg-base-100 shadow-xl">
+  <div class="card-body">
   <div>{{ $slot }}</div>
   
-    <div>
+  <div style="display: flex;">
     <form action="{{ url('booksedit/'.$id) }}" method="POST">
-         @csrf
-         
-        <button type="submit"  class="btn bg-blue-500 rounded-lg">
+        @csrf
+        <button type="submit" class="btn bg-blue-500 rounded-lg">
             更新
         </button>
-        
-     </form>
-  </div>
-  
-  <div>
-    <form action="{{ url('dashboard/'.$id) }}" method="POST">
-         @csrf
-         @method('DELETE')
-        
-        <button type="submit"  class="btn bg-blue-500 rounded-lg">
+    </form>
+
+    <form action="{{ url('dashboard') }}" method="POST">
+        @csrf
+        @method("DELETE")
+        <button type="submit" class="btn bg-blue-500 rounded-lg">
             削除
         </button>
-        
-     </form>
-  </div>
+    </form>
+</div>
 
 </div>

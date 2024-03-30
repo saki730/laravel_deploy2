@@ -19,46 +19,69 @@
             </div>
 
 
-            <!-- 本のタイトル -->
-            <form action="{{ url('books/update') }}" method="POST" class="w-full max-w-lg">
+ 
+<!--左エリア[END]--> 
+            <!-- プロフィール入力欄 -->
+            <form action="{{ url('books') }}" method="POST" class="w-full max-w-lg">
                 @csrf
-                
                   <div class="flex flex-col px-2 py-2">
                    <!-- カラム１ -->
                     <div class="w-full md:w-1/1 px-3 mb-2 md:mb-0">
                       <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-                       Book Name
+                      在籍年数
                       </label>
-                      <input name="item_name" value="{{$book->item_name}}" class="appearance-none block w-full text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" type="text" placeholder="">
+                      <input name="id" class="appearance-none block w-full text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" type="number" placeholder="">
                     </div>
                     <!-- カラム２ -->
                     <div class="w-full md:w-1/1 px-3">
                       <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-                        金額
+                      在籍会社名
                       </label>
-                      <input name="item_amount" value="{{$book->item_amount}}" class="appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="text" placeholder="">
+                      <input name="name" class="appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="text" placeholder="">
                     </div>
                     <!-- カラム３ -->
                     <div class="w-full md:w-1/1 px-3 mb-2 md:mb-0">
                       <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-                        数
+                      業種
                       </label>
-                      <input name="item_number" value="{{$book->item_number}}" class="appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="text" placeholder="">
+                      <input name="mail" class="appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="text" placeholder="">
                     </div>
                     <!-- カラム４ -->
                     <div class="w-full md:w-1/1 px-3 mb-6 md:mb-0">
+                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+                     職種
+                    </label>
+                    <input name="password" class="appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="text" placeholder="">
+                    </div>
+                    <!-- カラム5 -->
+                    <div class="w-full md:w-1/1 px-3 mb-6 md:mb-0">
                       <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-                        発売日
+                      年齢
                       </label>
-                      <input name="published" type="datetime-local" value="{{$book->published}}" class="appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"  placeholder="">
+                      <input name="age" class="appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="number" placeholder="">
                     </div>
                   </div>
-                  <!-- カラム５ -->
+
+                    <!-- カラム6 -->
+                      <div class="w-full md:w-1/1 px-3 mb-6 md:mb-0">
+                      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+                    職務内容
+                      </label>
+                      <input name="location" class="appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="text" placeholder="">
+                    </div>
+                  </div>
+               
                   <div class="flex flex-col">
                       <div class="text-gray-700 text-center px-4 py-2 m-2">
-                             <x-button class="bg-blue-500 rounded-lg">更新</x-button>
+                             <x-button class="bg-blue-500 rounded-lg">送信</x-button>
                       </div>
                    </div>
+                 </form>
+                 </div>
+        <!--左エリア[END]--> 
+
+
+
                 <!-- id値を送信 -->
                 <input type="hidden" name="id" value="{{$book->id}}">
                 <!--/ id値を送信 -->

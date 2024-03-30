@@ -11,5 +11,15 @@ class UserController extends Controller
         
     }
     
-    //
+    public function destroy($id)
+{
+    // IDでユーザーを取得して削除
+    $user = User::find($id);
+    $user->delete();
+
+    // 削除成功後に特定のルートにリダイレクト
+    return redirect()->route('dashboard');
+}
+
+
 }
