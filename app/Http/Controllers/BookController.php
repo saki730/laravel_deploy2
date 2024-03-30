@@ -91,7 +91,8 @@ class BookController extends Controller
      */
     public function edit(Book $book)
     {
-        //
+            //{books}id 値を取得 => Book $books id 値の1レコード取得
+            return view('booksedit', ['book' => $book]);
     }
 
     /**
@@ -100,7 +101,32 @@ class BookController extends Controller
      */
     public function update(Request $request, Book $book)
     {
-        //
+                //バリデーション
+                $validator = Validator::make($request->all(), [
+                    'id' => 'required|min:1|max:5',
+                    'name' => 'required | max:255',
+                    'mail' => 'required | max:255',
+                    'password'   => 'required | max:255',
+                    'age'   => 'required | max:255',
+                    'location'   => 'required | max:255',
+               ]);
+               //バリデーション:エラー
+                if ($validator->fails()) {
+                    return redirect('/booksedit/'.$request->id)
+                        ->withInput()
+                        ->withErrors($validator);
+               }
+               
+               //データ更新
+               $books = Book::find($request->id);
+               $books->id   = $request->id;               
+               $books->name   = $request->name;
+               $books->mail   = $request->mail;
+               $books->password = $request->password;
+               $books->age = $request->age;
+               $books->location   = $request->location;
+               $books->save();
+               return redirect('/');
     }
 
     /**

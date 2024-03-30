@@ -16,20 +16,20 @@ class DashboardController extends Controller
         // 例：$books = Book::all();
         $books = Book::all(); // Bookモデルを使用して全ての本を取得
         
-      
+        // // バリデーション
+        //$validator = Validator::make($request->all(), [
+        //     // ... バリデーションルール
+        // ]);
+
         // ビューに $books 変数を渡す
         return view('dashboard', ['books' => $books]);
     }
 
-    public function destroy(Book $book) {
-        //** ↓ 下をコピー ↓ **    
-         
-         $book->delete();       //追加
-         return redirect('/');  //追加
-         
-          //** ↑ 上をコピー ↑ **
-     }
+    
 
-
+    public function destroy(Book $book)
+    {
+    $book->delete();
+    return redirect()->route('dashboard');
+    }      
 }
-

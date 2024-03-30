@@ -12,13 +12,17 @@
         </button>
     </form>
 
-    <form action="{{ url('dashboard') }}" method="POST">
-        @csrf
-        @method("DELETE")
-        <button type="submit" class="btn bg-blue-500 rounded-lg">
+    
+    
+    <form action="{{ url('dashboard/'.$id) }}" method="POST">
+         @csrf
+         @method("DELETE")
+        
+        <button type="submit"  class="btn bg-blue-500 rounded-lg">
             削除
         </button>
-    </form>
+        
+     </form>
 </div>
 
 </div>

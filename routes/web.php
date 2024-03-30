@@ -9,6 +9,7 @@ use App\Models\Book; //追加
 
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,9 +33,9 @@ Route::get('/', [DashboardController::class,'index'])->middleware(['auth']);
 Route::post('/books',[BookController::class,"store"]);
 
 //本：削除 
-//Route::delete('/book/{book}', [BookController::class,"destroy"]);
+Route::delete('/books/{book}', [BookController::class,"destroy"]);
 
-Route::delete('/user/{id}', 'UserController@destroy')->name('user.destroy');
+//Route::delete('/usr/{id}', 'UserController@destroy')->name('user.destroy');
 
 //本：更新画面表示
 Route::post('/booksedit/{book}',[BookController::class,"edit"]); //通常
@@ -43,13 +44,13 @@ Route::post('/booksedit/{book}',[BookController::class,"edit"]); //通常
 Route::post('/books/update',[BookController::class,"update"]);
 
 //チーム一覧表示（管理画面）
-Route::get('teams',[TeamController::class,"index"])->middleware(['auth']);
+//Route::get('teams',[TeamController::class,"index"])->middleware(['auth']);
 
 //チーム登録処理
-Route::post('teamadd', [TeamController::class, 'store']);
+//Route::post('teamadd', [TeamController::class, 'store']);
 
 //チーム所属処理
-Route::get('team/{team_id}', [TeamController::class, 'join']);
+//Route::get('team/{team_id}', [TeamController::class, 'join']);
 
 
 Route::get('/dashboard', function () {
@@ -63,6 +64,10 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/user/profile/edit', [UserController::class, 'showUserForm']);
+
+
+//Route::resource('dashboard', 'BookController');
+
 
 
 require __DIR__.'/auth.php';

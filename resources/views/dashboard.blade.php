@@ -18,7 +18,7 @@
             
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-500 font-bold">
-                    ユーザープロフィールを管理する
+                    ユーザープロフィール
                 </div>
             </div>
 
