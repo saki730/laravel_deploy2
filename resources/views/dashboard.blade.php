@@ -31,7 +31,7 @@
          <!-- 現在の本 -->
          @if ($books->count() > 0)
             @foreach ($books as $book)
-                <x-collection id="{{ $book->id }}">{{ $book->name }}{{ $book->mail }}{{ $book->age }}{{ $book->location }}</x-collection>
+                <x-collection id="{{ $book->id }}">{{ $book->id }}{{ $book->name }}{{ $book->mail }}{{ $book->age }}{{ $book->location }}</x-collection>
             @endforeach
         @endif
     </div>
@@ -45,7 +45,7 @@
                    <!-- カラム１ -->
                     <div class="w-full md:w-1/1 px-3 mb-2 md:mb-0">
                       <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-                       ユーザーID
+                       社会人歴
                       </label>
                       <input name="id" class="appearance-none block w-full text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" type="number" placeholder="">
                     </div>

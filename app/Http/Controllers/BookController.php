@@ -41,7 +41,7 @@ class BookController extends Controller
               
     //バリデーション
     $validator = Validator::make($request->all(), [
-         'id' => 'required|min:3|max:255',
+         'id' => 'required|min:1|max:5',
          'name' => 'required | max:255',
          'mail' => 'required | max:255',
          'password'   => 'required | max:255',
@@ -108,6 +108,10 @@ class BookController extends Controller
      */
     public function destroy(Book $book)
     {
-        //
+    // 削除処理を行う
+    // ...
+
+    // 削除が成功した後に dashboard ページにリダイレクト
+    return redirect()->route('dashboard');
     }
 }
